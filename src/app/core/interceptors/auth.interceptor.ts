@@ -15,9 +15,28 @@ import { AuthService } from 'src/app/services/auth.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(  ) {}
+  constructor(private authService: AuthService,
+    private router : Router
+  ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+
+    const token: string = this.authService.getToken();
+    
+    request = request.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+
+    return next.handle(request).pipe(
+      catchError((err: HttpErrorResponse) => {
+        if (err.status === 401) {
+          this.authService.deleteToken();
+          this.router.navigateByUrl('/authentication/side-login');
+        }
+        return throwError(() => err);
+      })
+    );
   }
 }

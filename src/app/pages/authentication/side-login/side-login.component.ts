@@ -20,7 +20,8 @@ import { firstValueFrom } from 'rxjs';
 export class AppSideLoginComponent {
   options = this.settings.getOptions();
 
-  constructor(private settings: CoreService) {}
+  constructor(private settings: CoreService, private router: Router, 
+    private auth_service: AuthService, private spinner: NgxSpinnerService) {}
 
   form = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(6)]),
@@ -33,6 +34,21 @@ export class AppSideLoginComponent {
 
   async submit() {
 
+    this.spinner.show();
 
+    try {
+      console.log(this.form.value);
+      
+      const TOKEN : any = await firstValueFrom(this.auth_service.loginUser(this.form.value))
+      
+      if(TOKEN != null){
+        this.auth_service.setToken(TOKEN.token);
+        await this.auth_service.checkRolUser(this.form.value.username!, this.spinner);
+    }else{
+      this.spinner.hide();
+    }
+    } catch (error) {
+      this.spinner.hide();
+    }
   }
 }
