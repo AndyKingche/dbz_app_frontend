@@ -226,8 +226,6 @@ export class FullComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.username = this.authService.getUsername()!;
-
 
   }
 
@@ -236,7 +234,7 @@ export class FullComponent implements OnInit {
   }
 
   logOut() {
-    this.authService.logOutUser();
+    
   }
 
   toggleCollapsed() {

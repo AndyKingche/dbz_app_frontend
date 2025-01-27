@@ -104,7 +104,7 @@ export class AppHorizontalHeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.username = this.authServicie.getUsername()!;
+    
   }
 
   openDialog() {
@@ -116,7 +116,7 @@ export class AppHorizontalHeaderComponent implements OnInit {
   }
 
   logOut() {
-    this.authServicie.logOutUser();
+    
   }
 
   changeLanguage(lang: any): void {
