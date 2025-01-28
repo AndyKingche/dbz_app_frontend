@@ -18,10 +18,10 @@ const routes: Routes = [
         path:'user',
         component: UserFormComponent,
         data:{
-           title:'Admin | Usarios',
+           title:'Admin | Usuarios',
            urls:[
             {title: 'Dashboard', url: '/dashboard/admin'},
-            { title:'Admin | Usarios'}
+            { title:'Admin | Usuarios'}
            ]
         }
        
