@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +26,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CookieService } from 'ngx-cookie-service';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -54,7 +55,11 @@ export function HttpLoaderFactory(http: HttpClient): any {
     FullComponent,
     NgxSpinnerModule
   ],
-  providers:[CookieService],
+  providers:[CookieService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   exports: [TablerIconsModule],
   bootstrap: [AppComponent],
 })

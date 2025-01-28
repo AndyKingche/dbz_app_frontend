@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { ComponentsRoutingModule } from './components-routing.module';
 import { UserModuleModule } from './user-module/user-module.module';
-import { CharacterFormComponent } from './character-module/character-form/character-form.component';
 import { CharacterModuleModule } from './character-module/character-module.module';
 
 
@@ -14,7 +13,7 @@ import { CharacterModuleModule } from './character-module/character-module.modul
     CommonModule,
     ComponentsRoutingModule,
     UserModuleModule,
-    CharacterModuleModule
+    CharacterModuleModule,
   ]
 })
 export class ComponentsModule { }
