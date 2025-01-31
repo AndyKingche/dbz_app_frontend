@@ -27,6 +27,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CookieService } from 'ngx-cookie-service';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -53,7 +56,8 @@ export function HttpLoaderFactory(http: HttpClient): any {
     }),
 
     FullComponent,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatGridListModule
   ],
   providers:[CookieService,{
     provide: HTTP_INTERCEPTORS,

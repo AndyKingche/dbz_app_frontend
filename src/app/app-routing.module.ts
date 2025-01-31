@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { FullComponent } from './layouts/full/full.component';
+import { authGuard } from './core/guards/auth.guard';
+import { clientGuard } from './core/guards/client.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: BlankComponent,
+    canActivate: [clientGuard],
     children: [
       {
         path: '',

@@ -4,6 +4,7 @@ import { FullComponent } from '../layouts/full/full.component';
 import { UserFormComponent } from './user-module/user-form/user-form.component';
 import { BlankComponent } from '../layouts/blank/blank.component';
 import { authGuard } from '../core/guards/auth.guard';
+import { CharacterFormComponent } from './character-module/character-form/character-form.component';
 
 const routes: Routes = [
   {
@@ -20,8 +21,20 @@ const routes: Routes = [
         data:{
            title:'Admin | Usuarios',
            urls:[
-            {title: 'Dashboard', url: '/dashboard/admin'},
+            {title: 'Dashboard', url: '/dashboard/admin/user'},
             { title:'Admin | Usuarios'}
+           ]
+        }
+       
+      },
+      {
+        path:'character',
+        component: CharacterFormComponent,
+        data:{
+           title:'Admin | Personajes',
+           urls:[
+            {title: 'Dashboard', url: '/dashboard/admin/character'},
+            { title:'Admin | Personajes'}
            ]
         }
        
