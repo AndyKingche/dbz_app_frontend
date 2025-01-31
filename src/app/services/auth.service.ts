@@ -56,7 +56,8 @@ export class AuthService {
       const USER_ROL : any = await firstValueFrom(
         this.http.get(`${this.URL_User}/${username}`)
       );
-
+      console.log(USER_ROL.role.id);
+      
       localStorage.setItem('1',USER_ROL.role.id);
       
       if(USER_ROL.role.id == 1){ 
@@ -65,6 +66,8 @@ export class AuthService {
         this.route_navigate.navigate(['/dashboard/admin']);
       }
       if(USER_ROL.role.id == 2){ 
+        console.log('sii puedo ingresar');
+        
         this.setUsername(USER_ROL.userName+' '+USER_ROL.userLastname);
         spinner.hide();
         this.route_navigate.navigate(['/starter']);

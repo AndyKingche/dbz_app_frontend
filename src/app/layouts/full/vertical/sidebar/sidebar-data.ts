@@ -8,5 +8,10 @@ export const navItems: NavItem[] = [
     displayName: 'Usuarios',
     iconName: 'user',
     route: '/dashboard/admin/user'
+  },
+  {
+    displayName: 'Personajes',
+    iconName: 'user',
+    route: '/dashboard/admin/character'
   }
 ];

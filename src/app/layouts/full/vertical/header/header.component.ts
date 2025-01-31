@@ -73,7 +73,7 @@ export class HeaderComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    
+    this.username = this.authService.getUsername() || '';
   }
 
   openDialog() {
@@ -85,7 +85,7 @@ export class HeaderComponent implements OnInit{
   }
 
   logOut() {
-    
+    this.authService.logOutUser();
   }
 
   changeLanguage(lang: any): void {

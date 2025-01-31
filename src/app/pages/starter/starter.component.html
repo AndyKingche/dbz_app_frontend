@@ -1,9 +1,95 @@
-<!-- ============================================================== -->
-<!-- Simple four boxes Row -->
-<!-- ============================================================== -->
-<mat-card class="cardWithShadow">
-  <mat-card-content>
-    <mat-card-title>Sample Page</mat-card-title>
-    <mat-card-subtitle class="mat-body-1">This is test page</mat-card-subtitle>
-  </mat-card-content>
-</mat-card>
+<mat-toolbar class="navbar">
+  <!-- Logo y título -->
+  <span class="logo">DBZ APP</span>
+
+  <span class="spacer"></span>
+
+  <!-- Nombre del usuario y botón de logout -->
+  <div class="user-info">
+    <span class="username">{{user}}</span>
+    <button mat-icon-button (click)="logOut()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<!-- Menú desplegable en móviles -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="over" position="start">
+    <span class="logo">DBZ APP</span>
+  </mat-sidenav>
+</mat-sidenav-container>
+
+<div class="kv-text-center">
+  <div>
+    <img class="center-block" src="https://web.dragonball-api.com/images-compress/logo_dragonballapi.webp"
+      style="height: 130px;">
+  </div>
+</div>
+<div class="container text-center">
+  <div class="row align-items-stretch">
+    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3 card-dbz" *ngFor="let character of characters">
+      <mat-card class="card h-100">
+        <mat-card-header>
+          <h3>{{character.characterName}}</h3>
+        </mat-card-header>
+        <mat-card-content class="card-body-dbz">
+          <img [src]="character.characterImage" class="card-image-top img-fluid img-dragon" />
+        </mat-card-content>
+        <mat-card-content>
+          <span class="card-subtitle">
+            <h6 class="card-text" style="color: rgb(251, 192, 45);">Nombre: </h6>{{character.characterName}}
+          </span>
+          <p class="card-text"><small class="text-muted">{{character.characterDesc}}.</small></p>
+          <span class="text-muted">
+            <p class="card-text" style="color: rgb(251, 192, 45);">Edad: </p>{{character.characterAge}}
+          </span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <!-- Descripción -->
+      <div class="footer-description">
+        <p>
+          <strong>Dragon Ball API:</strong> ¡Una versión renovada de un clásico!
+          Esta página fue creada con la poderosa combinación de <strong>Spring Boot</strong> y <strong>Angular</strong>.
+          ¡Goku estaría orgulloso!
+        </p>
+      </div>
+
+      <!-- Separador -->
+      <hr>
+
+      <div class="footer-bottom">
+        <!-- Copyright -->
+        <div class="footer-copyright">
+          <span>© 2024 Andy Kingche, Inc. All Rights Reserved</span>
+        </div>
+
+        <!-- Logos de tecnologías -->
+        <div class="footer-logos">
+          <div class="footer-logo">
+            <img src="https://dragonball-andykingche.netlify.app/img/spring-boot.webp" alt="Spring Boot">
+            <p>Spring Boot</p>
+          </div>
+          <div class="footer-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHa5JI5_L24KbiXIO-AtmrrRBsyIKD6WOwaw&s" alt="Angular">
+            <p>Angular</p>
+          </div>
+        </div>
+
+        <!-- GitHub -->
+        <div class="footer-social">
+          <a href="https://github.com/AndyKingche" target="_blank">
+            <mat-icon>code</mat-icon> Andy Kingche
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

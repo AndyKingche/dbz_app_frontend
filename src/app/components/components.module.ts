@@ -8,6 +8,7 @@ import { CharacterModuleModule } from './character-module/character-module.modul
 
 @NgModule({
   declarations: [
+  
   ],
   imports: [
     CommonModule,

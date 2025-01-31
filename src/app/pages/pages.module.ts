@@ -5,7 +5,7 @@ import { StarterComponent } from './starter/starter.component';
 import { PagesRoutes } from './pages.routing.module';
 import { MaterialModule } from '../material.module';
 import { FormsModule } from '@angular/forms';
-
+import { MatChipsModule } from '@angular/material/chips';
 @NgModule({
   imports: [
     CommonModule,
